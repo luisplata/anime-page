@@ -30,8 +30,8 @@ jobs:
 
       - name: Validate build.zip
         run: |
-          echo "Listing contents of Export directory:"
-          ls -la Export
+          echo "Listing contents of dist directory:"
+          ls -la dist
           echo "Checking build.zip:"
           ls -la build.zip || echo "build.zip not found!"
 
