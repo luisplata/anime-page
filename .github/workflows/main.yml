@@ -26,7 +26,7 @@ jobs:
 
       - name: 🗜️ Comprimir el build
         run: |
-          zip -r build.zip build
+          zip -r build.zip dist
 
       - name: Validate build.zip
         run: |
