@@ -19,7 +19,7 @@ const SearchPage = () => {
             </div>
             <div className="row row-cols-1 row-cols-md-4 g-1">
                 {animes.map((anime) => (
-                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} />
+                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} imageCap="https://www3.animeflv.net/uploads/animes/covers/4130.jpg" isLoaded={false} />
                 ))}
                 <nav aria-label="Page navigation example">
                     <ul className="pagination justify-content-center">
