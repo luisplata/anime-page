@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: export-and-deploy
     steps:
-      
+
       - name: 📥 Descargar el artefacto
         uses: actions/download-artifact@v4
         with:
@@ -119,10 +119,10 @@ jobs:
 
             # Descomprimir el archivo en APP_DIR
             echo "Extracting ZIP..."
-            unzip -o "build.zip" -d "$APP_DIR"
+            unzip -o "$APP_DIR/build.zip" -d "$APP_DIR"
 
             # Eliminar el ZIP para evitar conflictos futuros
             echo "Deleting ZIP..."
-            rm -f "build.zip"
+            rm -f "$APP_DIR/build.zip"
             
             echo "Deployment finished!"
