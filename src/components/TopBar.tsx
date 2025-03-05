@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import Logo from "./Logo.tsx";
 
 const TopBar = () => {
     const [query, setQuery] = useState("");  // Store input value
@@ -15,13 +16,7 @@ const TopBar = () => {
         <nav className="navbar navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <img
-                        src="/assets/animebell_logo.png?v=1"
-                        alt="Logo"
-                        width="35"
-                        height="35"
-                        className="d-inline-block align-text-top"
-                    />
+                    <Logo />
                     <span className="text-center text-uppercase font-monospace align-middle">AnimeBell</span>
                 </a>
                 <div className="d-flex">
