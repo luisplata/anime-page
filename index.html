@@ -2,15 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + React + TS</title>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vite + React + TS</title>
+    <style>
+        :root {
+            --aspect-9x16: calc(16 / 9 * 100%);
+            --aspect-3x4: calc(4 / 3 * 100%);
+            --aspect-9x21: calc(21 / 9 * 100%);
+        }
+
+        .aspect-box {
+            width: 100%;
+            position: relative;
+        }
+
+        .aspect-box::before {
+            content: "";
+            display: block;
+        }
+
+        .aspect-9x16::before {
+            padding-top: var(--aspect-9x16);
+        }
+
+        .aspect-3x4::before {
+            padding-top: var(--aspect-3x4);
+        }
+
+        .aspect-9x21::before {
+            padding-top: var(--aspect-9x21);
+        }
+    </style>
 </head>
 
 <body>
-  <div id="root" class=""></div>
-  <script type="module" src="/src/main.tsx"></script>
+<div id="root" class=""></div>
+<script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>

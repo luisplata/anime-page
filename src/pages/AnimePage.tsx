@@ -66,7 +66,7 @@ const AnimePage = () => {
                 {/* Anime Info */}
                 <div className="row">
                     {/* Cover Image */}
-                    <div className="ratio ratio-9x16">
+                    <div className="ratio ratio-4x3">
                         <img src={animeDetailFromJson.image} alt={animeDetailFromJson.title}
                              className="img-fluid img-center rounded"/>
                     </div>
