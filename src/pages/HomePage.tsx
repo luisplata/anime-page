@@ -1,6 +1,6 @@
 import LatestAnime from "../components/LastedAnime";
 import LatestEpisodes from "../components/LastedEpisode";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 const HomePage = () => {
 
@@ -29,7 +29,7 @@ const HomePage = () => {
 
 
     useEffect(() => {
-        setAnimes(Array.from({ length: 21 }, (_, index) => ({
+        setAnimes(Array.from({length: 21}, (_, index) => ({
             id: index,
             title: "Loading...",
             slug: `loading-${index}`,
@@ -39,12 +39,11 @@ const HomePage = () => {
         fetch(`${API_BASE_URL}/animes`)
             .then((res) => res.json())
             .then((data) => {
-                if (data && data.data) {  // Ensure data.data exists
+                if (data?.data) {
                     setAnimes(data.data);
                 } else {
                     setAnimes([]);  // Set empty array if data is invalid
                 }
-                //console.log("Animes:", data.data, false);
                 setLoadingAnime(true);
             })
             .catch((error) => {
@@ -52,7 +51,6 @@ const HomePage = () => {
                 setLoadingAnime(false);
             });
     }, []);
-
 
 
     /*
@@ -90,10 +88,10 @@ const HomePage = () => {
 
     useEffect(() => {
         // Crear placeholders ANTES de la petición
-        setEpisodes(Array.from({ length: 21 }, (_, index) => ({
+        setEpisodes(Array.from({length: 21}, (_, index) => ({
             id: index,
             number: 0,
-            anime: { id: 0, slug: `loading-${index}`, title: "Loading...", image: "" },
+            anime: {id: 0, slug: `loading-${index}`, title: "Loading...", image: ""},
             isLoaded: false
         })));
 
@@ -129,12 +127,19 @@ const HomePage = () => {
             <div className="d-block d-sm-none">
                 <nav>
                     <div className="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                        <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Episodes</button>
-                        <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Animes</button>
+                        <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Episodes
+                        </button>
+                        <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false">Animes
+                        </button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
-                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex={0}>
+                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
+                         aria-labelledby="nav-home-tab" tabIndex={0}>
                         <div className="row">
                             <div className="row text-center mt-3">
                                 <h2>Latest Episodes</h2>
@@ -148,20 +153,23 @@ const HomePage = () => {
                                             animeSlug={episode.anime.slug}
                                             episodeNumber={episode.number}
                                             isLoaded={episode.isLoaded}
+                                            imageToLoad={episode.anime.image}
                                         />
                                     ))
                                 }
                             </div>
                         </div>
                     </div>
-                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex={0}>
+                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                         tabIndex={0}>
                         <div className="row">
                             <div className="row text-center mt-3">
                                 <h2>Latest Animes</h2>
                             </div>
                             <div className="row row-cols-1 row-cols-md-4 g-4">
                                 {animes.map((anime) => (
-                                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} imageCap={anime.image} isLoaded={loadingAnime} />
+                                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug}
+                                                 imageCap={anime.image} isLoaded={loadingAnime}/>
                                 ))}
                             </div>
                         </div>
@@ -183,6 +191,7 @@ const HomePage = () => {
                                         animeSlug={episode.anime.slug}
                                         episodeNumber={episode.number}
                                         isLoaded={loadingEpisode}
+                                        imageToLoad={episode.anime.image}
                                     />
                                 ))
                             }
@@ -193,7 +202,8 @@ const HomePage = () => {
                     <div className="container">
                         <div className="row row-cols-1 row-cols-md-4">
                             {animes.map((anime) => (
-                                <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} imageCap={anime.image} isLoaded={loadingAnime} />
+                                <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug}
+                                             imageCap={anime.image} isLoaded={loadingAnime}/>
                             ))}
                         </div>
                     </div>

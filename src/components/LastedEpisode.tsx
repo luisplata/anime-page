@@ -1,28 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect } from "react";
 
-const LatestEpisodes = ({ animeTitle, animeSlug, episodeNumber, isLoaded }: { animeTitle: string; animeSlug: string; episodeNumber: number, isLoaded: boolean }) => {
+const LatestEpisodes = ({animeTitle, animeSlug, episodeNumber, isLoaded, imageToLoad}: {
+    animeTitle: string;
+    animeSlug: string;
+    episodeNumber: number,
+    isLoaded: boolean,
+    imageToLoad: string
+}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/episode/${animeSlug}/${episodeNumber}`);
+        let specific = animeSlug.replace(/[^a-zA-Z0-9-]/g, '');
+        specific = encodeURIComponent(specific);
+        navigate(`/episode/${specific}/${episodeNumber}`);
     };
-
-    useEffect(() => {
-        //console.log(`isLoaded for ${animeTitle} changed:`, isLoaded);
-    }, [isLoaded]);
-
-    if (isLoaded) {
-        //console.log(`Episode ${episodeNumber} of ${animeTitle} is loaded.`);
-    } else {
-        //console.log(`Episode ${episodeNumber} of ${animeTitle} is not loaded.`);
-    }
 
     return (
         isLoaded ? (
             <div className="col-12 mb-3">
-                <div className="card" onClick={handleClick} style={{ width: "19rem", cursor: "pointer" }}>
+                <div className="card" onClick={handleClick} style={{width: "19rem", cursor: "pointer"}}>
                     <div className="card bg-dark text-white border-0">
                         {/* Badge (HOY) */}
                         <div className="position-absolute top-0 start-0 m-2">
@@ -30,13 +27,24 @@ const LatestEpisodes = ({ animeTitle, animeSlug, episodeNumber, isLoaded }: { an
                         </div>
 
                         {/* Image with Fixed Aspect Ratio */}
-                        <div className="ratio ratio-4x3">
+                        <div className="ratio ratio-4x3" style={{
+                            position: "relative",
+                            display: "inline-block"
+                        }}>
                             <img
-                                src="https://placehold.co/400x600"
+                                src={imageToLoad}
                                 className="card-img-top"
                                 alt={`Episode ${episodeNumber} of ${animeTitle}`}
-                                style={{ objectFit: "cover" }}
+                                style={{objectFit: "cover"}}
                             />
+                            <div style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                background: "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))"
+                            }}/>
                         </div>
 
                         {/* Text Overlay */}
@@ -49,7 +57,7 @@ const LatestEpisodes = ({ animeTitle, animeSlug, episodeNumber, isLoaded }: { an
             </div>
         ) : (
             <div className="col-12 mb-3">
-                <div className="card" onClick={handleClick} style={{ width: "19rem", cursor: "pointer" }}>
+                <div className="card" onClick={handleClick} style={{width: "19rem", cursor: "pointer"}}>
                     <div className="card bg-dark text-white border-0">
                         {/* Badge (HOY) */}
                         <div className="position-absolute top-0 start-0 m-2">

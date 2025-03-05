@@ -21,6 +21,9 @@ const LatestAnime = ({ title, slug, imageCap, isLoaded }: {
                         <h5 className="card-title placeholder-glow">
                             <span className="placeholder col-6"></span>
                         </h5>
+                        <div className="ratio ratio-4x3">
+                            <div className="placeholder bg-secondary w-100 h-100"></div>
+                        </div>
                         <p className="card-text placeholder-glow">
                             <span className="placeholder col-7"></span>
                             <span className="placeholder col-4"></span>
