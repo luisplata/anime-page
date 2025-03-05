@@ -16,7 +16,7 @@ const TopBar = () => {
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
                     <img
-                        src="/assets/animebell_logo.png"
+                        src="/assets/animebell_logo.png?v=1"
                         alt="Logo"
                         width="35"
                         height="35"

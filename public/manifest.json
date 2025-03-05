@@ -1,20 +1,25 @@
 {
-  "name": "Anime Bell",
-  "short_name": "AniBell",
+  "name": "AnimeBell",
+  "short_name": "AnimeBell",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "theme_color": "#6200ea",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "/logo192.png",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/logo512.png",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "/",
+  "description": "Explora un catálogo completo de animes y disfruta de los últimos episodios en alta calidad.",
+  "categories": ["entertainment", "video", "anime"],
+  "prefer_related_applications": false
 }

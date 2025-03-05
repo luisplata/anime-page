@@ -1,40 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8"/>
+    <!-- 🔹 Meta SEO Básico -->
+    <title>AnimeBell - Mira tus animes favoritos online</title>
+    <meta name="description" content="Explora un catálogo completo de animes y disfruta de los últimos episodios en alta calidad.">
+    <meta name="keywords" content="anime, ver anime online, capítulos anime, streaming anime">
+    <meta name="author" content="AnimeBell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <!-- 🔹 Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AnimeBell - Mira tus animes favoritos online">
+    <meta property="og:description" content="Explora un catálogo completo de animes y disfruta de los últimos episodios en alta calidad.">
+    <meta property="og:url" content="https://animebell.peryloth.com/">
+    <meta property="og:image" content="https://animebell.peryloth.com/assets/animebell_logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- 🔹 Twitter Card (Para que se vea bien en Twitter/X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AnimeBell - Mira tus animes favoritos online">
+    <meta name="twitter:description" content="Explora un catálogo completo de animes y disfruta de los últimos episodios en alta calidad.">
+    <meta name="twitter:image" content="https://animebell.peryloth.com/assets/animebell_logo.png">
+    <meta name="twitter:site" content="@bellseboss">
+
     <link rel="icon" type="image/svg+xml" href="/animebell.svg?v=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>AnimeBell</title>
-    <style>
-        :root {
-            --aspect-9x16: calc(16 / 9 * 100%);
-            --aspect-3x4: calc(4 / 3 * 100%);
-            --aspect-9x21: calc(21 / 9 * 100%);
-        }
 
-        .aspect-box {
-            width: 100%;
-            position: relative;
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "AnimeBell",
+            "url": "https://animebell.peryloth.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://animebell.peryloth.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
         }
-
-        .aspect-box::before {
-            content: "";
-            display: block;
-        }
-
-        .aspect-9x16::before {
-            padding-top: var(--aspect-9x16);
-        }
-
-        .aspect-3x4::before {
-            padding-top: var(--aspect-3x4);
-        }
-
-        .aspect-9x21::before {
-            padding-top: var(--aspect-9x21);
-        }
-    </style>
+    </script>
 </head>
 
 <body>
