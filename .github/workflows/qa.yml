@@ -4,15 +4,13 @@ on:
   workflow_dispatch: {}
   push:
     branches:
-      - main  # Cambia esto si usas otra rama
       - qa
 
 jobs:
 
   export-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: QA
+    environment: QA
     outputs:
       artifact_url: ${{ steps.generate_artifact.outputs.artifact_url }}
     steps:
@@ -58,8 +56,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: QA
+    environment: QA
     needs: export-and-deploy
     steps:
 
