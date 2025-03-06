@@ -5,17 +5,7 @@ import {useEffect, useState} from "react";
 const HomePage = () => {
 
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-    /*
-    {
-            "id": 1,
-            "title": "One Piece",
-            "slug": "one-piece",
-            "description": "A story about pirates.",
-            "image": "https://www3.animeflv.net/uploads/animes/covers/4130.jpg",
-            "created_at": null,
-            "updated_at": null
-        }
-    */
+    
     interface Anime {
         id: number;
         title: string;
