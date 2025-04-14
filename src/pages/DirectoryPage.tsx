@@ -54,7 +54,9 @@ const DirectoryPage = () => {
                 updated_at: ""
             });
         }));
-        fetch(`${API_BASE_URL}/animes?page=${currentPage}`)
+        fetch(`${API_BASE_URL}/animes?page=${currentPage}`, {
+            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+        })
             .then((res) => res.json())
             .then((data: AnimeResponse) => {
                 setAnimes(data.data);

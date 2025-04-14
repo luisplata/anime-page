@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 const HomePage = () => {
 
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-    
+
     interface Anime {
         id: number;
         title: string;
@@ -24,9 +24,11 @@ const HomePage = () => {
             title: "Loading...",
             slug: `loading-${index}`,
             description: "Loading...",
-            image: ""
+            image: "",
         })));
-        fetch(`${API_BASE_URL}/animes`)
+        fetch(`${API_BASE_URL}/animes`, {
+            credentials: 'include',
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data?.data) {
@@ -85,7 +87,9 @@ const HomePage = () => {
             isLoaded: false
         })));
 
-        fetch(`${API_BASE_URL}/episodes`)
+        fetch(`${API_BASE_URL}/episodes`, {
+            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data && data.data) {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useSearchParams} from "react-router-dom";
 import LatestAnime from "../components/LastedAnime";
 
 const SearchPage = () => {
@@ -46,7 +46,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         setLoading(true);
-        setAnimes(Array.from({ length: 20 }, (_, index) => {
+        setAnimes(Array.from({length: 20}, (_, index) => {
             return ({
                 id: index,
                 title: "Loading...",
@@ -57,7 +57,9 @@ const SearchPage = () => {
                 updated_at: ""
             });
         }));
-        fetch(`${API_BASE_URL}/animes/search?q=${query}&page=${currentPage}`)
+        fetch(`${API_BASE_URL}/animes/search?q=${query}&page=${currentPage}`, {
+            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+        })
             .then((res) => res.json())
             .then((data: AnimeResponse) => {
                 setAnimes(data.data);
@@ -83,15 +85,17 @@ const SearchPage = () => {
             </div>
             <div className="row row-cols-1 row-cols-md-4 g-1">
                 {animes.map((anime) => (
-                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} imageCap={anime.image} isLoaded={!loading} />
+                    <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug} imageCap={anime.image}
+                                 isLoaded={!loading}/>
                 ))}
             </div>
             <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-center">
                     <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                        <button className="page-link" onClick={() => handlePageChange(currentPage - 1)}>Previous</button>
+                        <button className="page-link" onClick={() => handlePageChange(currentPage - 1)}>Previous
+                        </button>
                     </li>
-                    {Array.from({ length: totalPages }, (_, i) => (
+                    {Array.from({length: totalPages}, (_, i) => (
                         <li key={i + 1} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
                             <button className="page-link" onClick={() => handlePageChange(i + 1)}>{i + 1}</button>
                         </li>

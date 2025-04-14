@@ -31,7 +31,9 @@ const EpisodePage = () => {
     const [loadingEpisodeDetail, setLoadingEpisodeDetail] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/episodes/${animeSlug}-${episodeNumber}`)
+        fetch(`${API_BASE_URL}/episodes/${animeSlug}-${episodeNumber}`, {
+            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
