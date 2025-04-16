@@ -1,6 +1,6 @@
 import LatestAnime from "../components/LastedAnime";
 import LatestEpisodes from "../components/LastedEpisode";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
 
@@ -19,18 +19,21 @@ const HomePage = () => {
 
 
     useEffect(() => {
-        setAnimes(Array.from({length: 21}, (_, index) => ({
+        setAnimes(Array.from({ length: 21 }, (_, index) => ({
             id: index,
             title: "Loading...",
             slug: `loading-${index}`,
             description: "Loading...",
             image: "",
         })));
+        console.log("API_BASE_URL:", API_BASE_URL); // Verifica que esté configurado correctamente
+
         fetch(`${API_BASE_URL}/animes`, {
             credentials: 'include',
         })
             .then((res) => res.json())
             .then((data) => {
+                console.log("Received data:", data); // Log de la respuesta
                 if (data?.data) {
                     setAnimes(data.data);
                 } else {
@@ -80,10 +83,10 @@ const HomePage = () => {
 
     useEffect(() => {
         // Crear placeholders ANTES de la petición
-        setEpisodes(Array.from({length: 21}, (_, index) => ({
+        setEpisodes(Array.from({ length: 21 }, (_, index) => ({
             id: index,
             number: 0,
-            anime: {id: 0, slug: `loading-${index}`, title: "Loading...", image: ""},
+            anime: { id: 0, slug: `loading-${index}`, title: "Loading...", image: "" },
             isLoaded: false
         })));
 
@@ -122,18 +125,18 @@ const HomePage = () => {
                 <nav>
                     <div className="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                         <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                aria-selected="true">Episodes
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">Episodes
                         </button>
                         <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                                aria-selected="false">Animes
+                            data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                            aria-selected="false">Animes
                         </button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
-                         aria-labelledby="nav-home-tab" tabIndex={0}>
+                        aria-labelledby="nav-home-tab" tabIndex={0}>
                         <div className="row">
                             <div className="row text-center mt-3">
                                 <h2>Latest Episodes</h2>
@@ -155,7 +158,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
-                         tabIndex={0}>
+                        tabIndex={0}>
                         <div className="row">
                             <div className="row text-center mt-3">
                                 <h2>Latest Animes</h2>
@@ -163,7 +166,7 @@ const HomePage = () => {
                             <div className="row row-cols-1 row-cols-md-4 g-4">
                                 {animes.map((anime) => (
                                     <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug}
-                                                 imageCap={anime.image} isLoaded={loadingAnime}/>
+                                        imageCap={anime.image} isLoaded={loadingAnime} />
                                 ))}
                             </div>
                         </div>
@@ -197,7 +200,7 @@ const HomePage = () => {
                         <div className="row row-cols-1 row-cols-md-4">
                             {animes.map((anime) => (
                                 <LatestAnime key={anime.slug} title={anime.title} slug={anime.slug}
-                                             imageCap={anime.image} isLoaded={loadingAnime}/>
+                                    imageCap={anime.image} isLoaded={loadingAnime} />
                             ))}
                         </div>
                     </div>
