@@ -31,7 +31,12 @@ const EpisodePage = () => {
     const [loadingEpisodeDetail, setLoadingEpisodeDetail] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/episodes/${animeSlug}-${episodeNumber}`)
+        fetch(`${API_BASE_URL}/episodes/${animeSlug}-${episodeNumber}`, {
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data) {

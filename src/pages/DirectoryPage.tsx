@@ -54,7 +54,12 @@ const DirectoryPage = () => {
                 updated_at: ""
             });
         }));
-        fetch(`${API_BASE_URL}/animes?page=${currentPage}`)
+        fetch(`${API_BASE_URL}/animes?page=${currentPage}`, {
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
+        })
             .then((res) => res.json())
             .then((data: AnimeResponse) => {
                 setAnimes(data.data);

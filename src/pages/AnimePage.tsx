@@ -41,13 +41,18 @@ const AnimePage = () => {
     const [loadingAnimeDetail, setLoadingAnimeDetail] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/anime/${animeSlug}`)
+        fetch(`${API_BASE_URL}/anime/${animeSlug}`, {
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
                     setAnimeDetailFromJson(data);
                 } else {
-                    setAnimeDetailFromJson({} as AnimeDetail);  // Set empty object if data is invalid
+                    setAnimeDetailFromJson({} as AnimeDetail);
                 }
                 setLoadingAnimeDetail(true);
             })
