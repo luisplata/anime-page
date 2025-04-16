@@ -42,7 +42,10 @@ const AnimePage = () => {
 
     useEffect(() => {
         fetch(`${API_BASE_URL}/anime/${animeSlug}`, {
-            credentials: 'include', // 👈 Esto es lo que incluye las cookies
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((data) => {

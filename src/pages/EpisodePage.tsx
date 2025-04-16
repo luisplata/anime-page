@@ -32,7 +32,10 @@ const EpisodePage = () => {
 
     useEffect(() => {
         fetch(`${API_BASE_URL}/episodes/${animeSlug}-${episodeNumber}`, {
-            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((data) => {

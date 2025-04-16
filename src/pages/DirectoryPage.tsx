@@ -55,7 +55,10 @@ const DirectoryPage = () => {
             });
         }));
         fetch(`${API_BASE_URL}/animes?page=${currentPage}`, {
-            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((data: AnimeResponse) => {

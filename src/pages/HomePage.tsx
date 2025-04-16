@@ -29,7 +29,10 @@ const HomePage = () => {
         console.log("API_BASE_URL:", API_BASE_URL); // Verifica que esté configurado correctamente
 
         fetch(`${API_BASE_URL}/animes`, {
-            credentials: 'include',
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((data) => {
@@ -91,7 +94,10 @@ const HomePage = () => {
         })));
 
         fetch(`${API_BASE_URL}/episodes`, {
-            credentials: 'include', // 👈 Esto incluye las cookies como client_uuid
+            headers: {
+                "X-Client-UUID": localStorage.getItem('client_uuid') || '',
+                "Content-Type": "application/json",
+            },
         })
             .then((res) => res.json())
             .then((data) => {
